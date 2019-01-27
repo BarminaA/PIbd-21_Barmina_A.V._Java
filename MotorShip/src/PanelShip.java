@@ -3,10 +3,10 @@ import java.awt.Graphics;
 import javax.swing.JPanel;
 
 public class PanelShip extends JPanel{
-	private Ship ship;
+	private ITransport ship;
 	
-	public void AddShip(Ship ship) {
-		this.ship = ship;
+	public void AddShip(ITransport ship2) {
+		this.ship = ship2;
 	}
 	@Override
 	public void paint(Graphics g) {

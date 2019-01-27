@@ -12,7 +12,7 @@ public class FormShip {
 
 	public JFrame frame;
 	private PanelShip panel;
-	private Ship ship;
+	private ITransport ship;
 
 	/**
 	 * Launch the application.
@@ -58,13 +58,27 @@ public class FormShip {
 		buttonCreate.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				Random rnd = new Random();
-				ship = new Ship(100 + rnd.nextInt(300), 1000 + rnd.nextInt(2000), Color.darkGray);
+				ship = new BaseShip(100 + rnd.nextInt(300), 1000 + rnd.nextInt(2000), Color.darkGray);
 				ship.SetPosition(rnd.nextInt(150) + 50, rnd.nextInt(150) + 50, 473, 376);
 				panel.AddShip(ship);
 				panel.repaint();
 			}
 		});
 		buttonCreate.setVerticalAlignment(SwingConstants.BOTTOM);
+
+		JButton buttonCreateShip = new JButton("Create Ship");
+		buttonCreateShip.setBounds(100, 10, 150, 21);
+		frame.getContentPane().add(buttonCreateShip);
+		buttonCreateShip.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				Random rnd = new Random();
+				ship = new Ship(100 + rnd.nextInt(300), 1000 + rnd.nextInt(2000), Color.darkGray, Color.red, true, true);
+				ship.SetPosition(rnd.nextInt(150) + 50, rnd.nextInt(150) + 50, 473, 376);
+				panel.AddShip(ship);
+				panel.repaint();
+			}
+		});
+		buttonCreateShip.setVerticalAlignment(SwingConstants.BOTTOM);
 
 		JButton btnUp = new JButton("^");
 		btnUp.addActionListener(new ActionListener() {
