@@ -1,31 +1,18 @@
 import java.awt.Color;
 import java.awt.Graphics;
 
-public class Ship extends BaseShip {
+public class BaseShip extends Vehicle {
 	private int shipWidth = 100;
 	private int shipHeight = 80;
 	public Color MainColor;
-	public Color DopColor;
-	public boolean Tube;
-	public boolean Window;
 
-	public Ship(int maxSpeed, float weight, Color mainColor, Color dopColor, boolean tube, boolean window) {
-		super(maxSpeed, weight, mainColor);
+	public BaseShip(int maxSpeed, float weight, Color mainColor) {
 		MaxSpeed = maxSpeed;
 		Weight = weight;
 		MainColor = mainColor;
-		DopColor = dopColor;
-		Tube = tube;
-		Window = window;
 	}
 
-	public void SetPosition(int x, int y, int width, int height) {
-		_startPosX = x;
-		_startPosY = y;
-		_pictureWidth = width;
-		_pictureHeight = height;
-	}
-
+	@Override
 	public void MoveTransport(Direction direction) {
 		float step = MaxSpeed * 100 / Weight;
 		switch (direction) {
@@ -52,6 +39,7 @@ public class Ship extends BaseShip {
 		}
 	}
 
+	@Override
 	public void DrawShip(Graphics g) {
 		int PosX = (int) _startPosX;
 		int PosY = (int) _startPosY;
@@ -65,22 +53,20 @@ public class Ship extends BaseShip {
 		g.drawRect(PosX + 70, PosY - 55, 10, 15);
 		g.drawRect(PosX + 90, PosY - 55, 10, 15);
 
-		if (Window) {
-			g.setColor(DopColor);
-			g.fillOval(PosX + 80, PosY - 35, 10, 10);
-			g.fillOval(PosX + 60, PosY - 35, 10, 10);
-			g.fillOval(PosX + 100, PosY - 35, 10, 10);
-			g.fillOval(PosX + 50, PosY - 15, 10, 10);
-			g.fillOval(PosX + 70, PosY - 15, 10, 10);
-			g.fillOval(PosX + 90, PosY - 15, 10, 10);
-			g.fillOval(PosX + 110, PosY - 15, 10, 10);
-		}
-		if (Tube) {
-			g.setColor(DopColor);
-			g.fillOval(PosX + 50, PosY - 65, 15, 10);
-			g.fillOval(PosX + 55, PosY - 60, 15, 10);
-			g.fillOval(PosX + 70, PosY - 65, 15, 10);
-			g.fillOval(PosX + 75, PosY - 60, 15, 10);
-		}
+		g.drawOval(PosX + 80, PosY - 35, 10, 10);
+		g.drawOval(PosX + 60, PosY - 35, 10, 10);
+		g.drawOval(PosX + 100, PosY - 35, 10, 10);
+		g.drawOval(PosX + 50, PosY - 15, 10, 10);
+		g.drawOval(PosX + 70, PosY - 15, 10, 10);
+		g.drawOval(PosX + 90, PosY - 15, 10, 10);
+		g.drawOval(PosX + 110, PosY - 15, 10, 10);
+
+		g.fillOval(PosX + 80, PosY - 35, 10, 10);
+		g.fillOval(PosX + 60, PosY - 35, 10, 10);
+		g.fillOval(PosX + 100, PosY - 35, 10, 10);
+		g.fillOval(PosX + 50, PosY - 15, 10, 10);
+		g.fillOval(PosX + 70, PosY - 15, 10, 10);
+		g.fillOval(PosX + 90, PosY - 15, 10, 10);
+		g.fillOval(PosX + 110, PosY - 15, 10, 10);
 	}
 }
